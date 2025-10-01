@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36518.9 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vision-tool-client-wpf", "vision-tool-client-wpf\vision-tool-client-wpf.csproj", "{1317B7AD-F938-4C33-BA93-136E8BFDEDDC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1317B7AD-F938-4C33-BA93-136E8BFDEDDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1317B7AD-F938-4C33-BA93-136E8BFDEDDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1317B7AD-F938-4C33-BA93-136E8BFDEDDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1317B7AD-F938-4C33-BA93-136E8BFDEDDC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FD9224DA-EE3F-47BA-8DB0-1E46F3A5E2CC}
+	EndGlobalSection
+EndGlobal

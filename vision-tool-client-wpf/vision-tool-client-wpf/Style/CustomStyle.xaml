@@ -1,0 +1,251 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!-- CustomPanel 스타일 -->
+    <Style x:Key="CustomPanelStyle" TargetType="Border">
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="BorderBrush" Value="#E7E7EE"/>
+        <Setter Property="BorderThickness" Value="4"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+    </Style>
+
+    <!-- SelectedPanel 스타일 (CustomPanel + 추가) -->
+    <Style x:Key="SelectedPanelStyle" TargetType="Border" BasedOn="{StaticResource CustomPanelStyle}">
+        <Setter Property="Background" Value="#F5F8FF"/>
+        <Setter Property="BorderBrush" Value="#3A51FB"/>
+        <Setter Property="BorderThickness" Value="2"/>
+    </Style>
+
+    <!-- TransparentCheckBox 스타일 -->
+    <Style x:Key="TransparentCheckBoxStyle" TargetType="CheckBox">
+        <Setter Property="Background" Value="#80FF0000"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Width" Value="20"/>
+        <Setter Property="Height" Value="20"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+    </Style>
+
+    <!-- CustomDateTimePicker 스타일 -->
+    <Style x:Key="CustomDatePickerStyle" TargetType="DatePicker">
+        <Setter Property="BorderBrush" Value="#E7E7EE"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Padding" Value="4"/>
+    </Style>
+
+    <!-- CustomFilterBar 버튼 스타일 -->
+    <Style x:Key="FilterButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="#FFF5F5F5"/>
+        <Setter Property="Foreground" Value="#222"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="BorderBrush" Value="#E7E7EE"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="8,4"/>
+        <Setter Property="Margin" Value="4"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="bd"
+              CornerRadius="10"
+              Background="{TemplateBinding Background}"
+              BorderBrush="{TemplateBinding BorderBrush}"
+              BorderThickness="{TemplateBinding BorderThickness}"
+              SnapsToDevicePixels="True">
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                          Margin="{TemplateBinding Padding}"
+                          RecognizesAccessKey="True"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="bd" Property="Background" Value="#222222"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="bd" Property="Background" Value="#111111"/>
+                            <Setter TargetName="bd" Property="RenderTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleX="0.995" ScaleY="0.995"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="bd" Property="Opacity" Value="0.5"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Searchbar 스타일 -->
+    <Style x:Key="SearchBarPanelStyle" TargetType="Border">
+        <Setter Property="Background" Value="#FFF"/>
+        <Setter Property="CornerRadius" Value="8"/>
+        <Setter Property="BorderBrush" Value="#E7E7EE"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding" Value="8"/>
+    </Style>
+    <Style x:Key="SearchTextBoxStyle" TargetType="TextBox" BasedOn="{StaticResource MahApps.Styles.TextBox}">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Padding" Value="6"/>
+        <Setter Property="BorderBrush" Value="#E7E7EE"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Background" Value="#FFF"/>
+    </Style>
+
+    <!-- CardView 스타일 -->
+    <Style x:Key="CardViewStyle" TargetType="Border">
+        <Setter Property="Background" Value="#FFF"/>
+        <Setter Property="CornerRadius" Value="12"/>
+        <Setter Property="BorderBrush" Value="#CCCCCC"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect Color="#33000000" BlurRadius="8" ShadowDepth="2"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Margin" Value="10"/>
+    </Style>
+
+    <!-- 공통 라벨 스타일 -->
+    <Style x:Key="CommonLabelStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="Foreground" Value="#222"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Margin" Value="3"/>
+    </Style>
+
+    <!-- 공통 이미지 스타일 -->
+    <Style x:Key="CommonImageStyle" TargetType="Image">
+        <Setter Property="Stretch" Value="Uniform"/>
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+    </Style>
+
+    <Style x:Key="UploadButtonStyle" TargetType="Button" BasedOn="{StaticResource MahApps.Styles.Button}" >
+        <Setter Property="Background" Value="#3A51FB"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="BorderBrush" Value="#3A51FB"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Width" Value="100"/>
+        <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Bd"
+            Background="#3A51FB"
+            BorderBrush="#3A51FB"
+            BorderThickness="{TemplateBinding BorderThickness}"
+            CornerRadius="4"
+            Padding="{TemplateBinding Padding}">
+                            <ContentPresenter
+            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+            RecognizesAccessKey="True"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Bd" Property="Background" Value="#5C72FF"/>
+                                <Setter TargetName="Bd" Property="BorderBrush" Value="#5C72FF"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="Bd" Property="Background" Value="#2A40D8"/>
+                                <Setter TargetName="Bd" Property="BorderBrush" Value="#2A40D8"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="Bd" Property="Opacity" Value="0.6"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    <Style x:Key="SelectAllButtonStyle" TargetType="Button" BasedOn="{StaticResource MahApps.Styles.Button}" >
+        <Setter Property="Background" Value="#E7E7EE"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="BorderBrush" Value="#E7E7EE"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Width" Value="100"/>
+
+    </Style>
+
+    <Style x:Key="PrimaryButtonStyle" TargetType="Button" BasedOn="{StaticResource MahApps.Styles.Button}" >
+        <Setter Property="Background" Value="#3A51FB"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="BorderBrush" Value="#3A51FB"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Width" Value="100"/>
+        
+    </Style>
+
+    <Style x:Key="SecondaryButtonStyle" TargetType="Button" BasedOn="{StaticResource MahApps.Styles.Button}" >
+        <Setter Property="Background" Value="#E7E7EE"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="BorderBrush" Value="#E7E7EE"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Width" Value="100"/>
+        
+    </Style>
+
+    <Style x:Key="FlatTextBoxStyle" TargetType="TextBox" BasedOn="{StaticResource SearchTextBoxStyle}">
+        <Setter Property="FontFamily" Value="Roboto"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background" Value="{StaticResource MahApps.Brushes.ThemeBackground}"/>
+        <Setter Property="Foreground" Value="{StaticResource MahApps.Brushes.ThemeForeground}"/>
+        <Setter Property="Padding" Value="4"/>
+    </Style>
+
+    <Style x:Key="SelectableTabItemStyle" TargetType="TabItem">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+
+        <!-- 헤더를 Border로 감싸고, 선택 시 Border.Background를 바꿔줌 -->
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TabItem">
+                    <Border x:Name="HeaderBorder"
+                        Background="Transparent"
+                        Padding="2"
+                        SnapsToDevicePixels="True">
+                        <!-- 사용자가 정의한 Header(Grid/Image/TextBlock)가 여기 표시됨 -->
+                        <ContentPresenter ContentSource="Header"/>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="HeaderBorder"
+                                Property="Background"
+                                Value="#E6E9FE"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="HeaderBorder" Property="Opacity" Value="0.6"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+</ResourceDictionary>

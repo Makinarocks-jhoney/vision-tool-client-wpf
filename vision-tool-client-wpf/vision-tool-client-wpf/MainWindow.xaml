@@ -10,64 +10,7 @@
         mc:Ignorable="d"
         Background="#FFF9F9FB"
         Title="" WindowState="Maximized">
-    <mah:MetroWindow.Resources>
-        <!-- 팔레트 -->
-        <Color x:Key="ColPageBg">#FFF9F9FB</Color>
-        <Color x:Key="ColPanelBg">#FFFFFFFF</Color>
-        <Color x:Key="ColBorder">#FFE7E7EE</Color>
-        <Color x:Key="ColTextMain">#FF2B2B3B</Color>
-        <Color x:Key="ColAccent">#FF3A51FB</Color>
-        <Color x:Key="ColMenuSelectedBg">#FFE6E9FE</Color>
-        <!-- (230,233,254) -->
-        <SolidColorBrush x:Key="BrushPageBg" Color="{StaticResource ColPageBg}"/>
-        <SolidColorBrush x:Key="BrushPanelBg" Color="{StaticResource ColPanelBg}"/>
-        <SolidColorBrush x:Key="BrushBorder"   Color="{StaticResource ColBorder}"/>
-        <SolidColorBrush x:Key="BrushTextMain" Color="{StaticResource ColTextMain}"/>
-        <SolidColorBrush x:Key="BrushAccent"   Color="{StaticResource ColAccent}"/>
-
-        <!-- 카드형 패널 공통 -->
-        <Style x:Key="CardBorder" TargetType="Border" >
-            <Setter Property="Background" Value="{StaticResource BrushPanelBg}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource BrushBorder}"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="CornerRadius" Value="8"/>
-            <Setter Property="Padding" Value="12"/>
-            <Setter Property="SnapsToDevicePixels" Value="True"/>
-        </Style>
-
-        <!-- 좌측 메뉴 항목 -->
-        <Style x:Key="LeftMenuItem" TargetType="Border">
-            <Setter Property="CornerRadius" Value="8"/>
-            <Setter Property="Padding" Value="12,10"/>
-            <Setter Property="Margin" Value="12,6,12,0"/>
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Cursor" Value="Hand"/>
-            <Setter Property="BorderBrush" Value="Transparent"/>
-            <Setter Property="BorderThickness" Value="1"/>
-        </Style>
-
-        <!-- 좌측 메뉴: 선택 항목(홈 선택된 상태 예시) -->
-        <Style x:Key="LeftMenuItem.Selected" BasedOn="{StaticResource LeftMenuItem}" TargetType="Border">
-            <Setter Property="Background" Value="#FFE6E9FE"/>
-            <Setter Property="BorderBrush" Value="#FFE6E9FE"/>
-        </Style>
-
-        <!-- 필드 박스(입력 패널 용) -->
-        <Style x:Key="FieldBox" TargetType="Border">
-            <Setter Property="Background" Value="{StaticResource BrushPanelBg}"/>
-            <Setter Property="CornerRadius" Value="4"/>
-            <Setter Property="BorderBrush" Value="{StaticResource BrushBorder}"/>
-            <Setter Property="BorderThickness" Value="2"/>
-            <Setter Property="Padding" Value="10"/>
-        </Style>
-        <Style x:Key="LeftMenuText" TargetType="TextBlock">
-            <Setter Property="FontFamily" Value="Arial, Segoe UI, Malgun Gothic"/>
-            <Setter Property="FontSize" Value="12"/>
-            <Setter Property="Foreground" Value="{StaticResource BrushTextMain}"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-        </Style>
-    </mah:MetroWindow.Resources>
-    <Grid Background="{StaticResource BrushPageBg}">
+    <Grid >
         <!-- 베이스 레이아웃 -->
         <Grid>
             <Grid.RowDefinitions>
@@ -79,8 +22,7 @@
             
             <!-- Header -->
             <Border Grid.Row="0" 
-                    Background="{StaticResource BrushPanelBg}"
-                    BorderBrush="{StaticResource BrushBorder}"
+                    
                     BorderThickness="0,0,0,1">
                 <Grid Margin="12,0" VerticalAlignment="Center">
                     <Grid.ColumnDefinitions>
@@ -104,7 +46,7 @@
                            
                            >
                         <Grid Background="{DynamicResource MahApps.Brushes.ThemeBackground}">
-                        <Border BorderBrush="{DynamicResource MahApps.Brushes.ThemeForeground}" BorderThickness="1" CornerRadius="8" >
+                        <Border Style="{StaticResource CustomPanelStyle}"  CornerRadius="8" >
                             <StackPanel Margin="5">
                                 <TextBlock Text="Account" FontSize="14" FontFamily="Arial" FontWeight="Bold" Margin="10" />
                                 <StackPanel Orientation="Horizontal">
@@ -135,7 +77,10 @@
             </Border>
 
             <TabControl Grid.Row="1" TabStripPlacement="Left"  >
-                <TabItem FontSize="12" FontWeight="Bold" >
+                <TabControl.Resources>
+                    <Style TargetType="TabItem" BasedOn="{StaticResource SelectableTabItemStyle}" />
+                </TabControl.Resources>
+                <TabItem  >
                     <TabItem.Header>
                         <Grid Width="200">
                             <Grid.ColumnDefinitions>
@@ -150,7 +95,7 @@
                     </TabItem.Header>
                     <view:RealTimeInspectionView />
                 </TabItem>
-                <TabItem FontSize="12" FontWeight="Bold" >
+                <TabItem  >
                     <TabItem.Header>
                         <Grid Width="200">
                             <Grid.ColumnDefinitions>

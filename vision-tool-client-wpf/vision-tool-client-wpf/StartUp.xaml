@@ -10,59 +10,9 @@
         UseNoneWindowStyle="True"
         Title="VisionTool Edge - URL Input" WindowState="Maximized">
 
-    <mah:MetroWindow.Resources>
-        <!-- TextBox 공통 스타일 -->
-        <Style x:Key="LoginTextBoxStyle" TargetType="TextBox" BasedOn="{StaticResource MahApps.Styles.TextBox}" >
-            <Setter Property="FontFamily" Value="Roboto"/>
-            <Setter Property="FontSize" Value="12"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Padding" Value="0"/>
-        </Style>
-        <!-- Button 공통 스타일 -->
-        <Style x:Key="LoginButtonStyle" TargetType="Button" BasedOn="{StaticResource MahApps.Styles.Button}">
-            <Setter Property="FontFamily" Value="Roboto"/>
-            <Setter Property="FontSize" Value="12"/>
-            <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="Width" Value="100"/>
-            <Setter Property="Height" Value="40"/>
-            <Setter Property="Margin" Value="0,0,15,0"/>
-        </Style>
-        <!-- Cancel 버튼 스타일 -->
-        <Style x:Key="CancelButtonStyle" TargetType="Button" BasedOn="{StaticResource LoginButtonStyle}">
-            <Setter Property="Background" Value="#E7E7EE"/>
-            <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="BorderBrush" Value="#E7E7EE"/>
-            <Setter Property="BorderThickness" Value="2"/>
-            <Setter Property="Margin" Value="0"/>
-        </Style>
-        <!-- OK 버튼 스타일 -->
-        <Style x:Key="OkButtonStyle" TargetType="Button" BasedOn="{StaticResource LoginButtonStyle}">
-            <Setter Property="Background" Value="#3A51FB"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="BorderBrush" Value="#3A51FB"/>
-            <Setter Property="BorderThickness" Value="2"/>
-        </Style>
-        <!-- Label 공통 스타일 -->
-        <Style x:Key="LoginLabelStyle" TargetType="TextBlock" BasedOn="{StaticResource MahApps.Styles.TextBlock}">
-            <Setter Property="FontFamily" Value="Roboto"/>
-            <Setter Property="FontSize" Value="12"/>
-            <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="Margin" Value="5,10,5,0"/>
-        </Style>
-        <!-- Status Label 스타일 -->
-        <Style x:Key="StatusLabelStyle" TargetType="TextBlock" BasedOn="{StaticResource MahApps.Styles.TextBlock}">
-            <Setter Property="FontFamily" Value="Roboto"/>
-            <Setter Property="FontSize" Value="10"/>
-            <Setter Property="Foreground" Value="Red"/>
-            <Setter Property="Visibility" Value="Collapsed"/>
-            <Setter Property="Margin" Value="5,5,5,0"/>
-        </Style>
-    </mah:MetroWindow.Resources>
-    <Border Background="White"
-        BorderBrush="#E7E7EE"
-        BorderThickness="2"
-        CornerRadius="8"
-        Padding="10"
+    
+    <Border 
+        Style="{StaticResource CustomPanelStyle}"
         HorizontalAlignment="Center"
         VerticalAlignment="Center">
         <Grid>
@@ -76,31 +26,32 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <!-- 로그인 URL 라벨 -->
-            <TextBlock Grid.Row="0" Text="로그인 URL" Style="{StaticResource LoginLabelStyle}"/>
+            <Label Style="{StaticResource CommonLabelStyle}" Grid.Row="0" Content="로그인 URL" />
             <!-- 로그인 URL 입력 -->
-            <Border Grid.Row="1" Background="White" BorderBrush="#E7E7EE" BorderThickness="2" CornerRadius="2" Padding="10" Margin="0,5,0,0">
+            <Border Style="{StaticResource CustomPanelStyle}" Grid.Row="1" Background="White" BorderBrush="#E7E7EE" BorderThickness="2" CornerRadius="2" Padding="10" Margin="0,5,0,0">
                 <TextBox x:Name="txtUrl"
-                     Style="{StaticResource LoginTextBoxStyle}"
+                     Style="{StaticResource FlatTextBoxStyle}"
                          mah:TextBoxHelper.UseFloatingWatermark="True"
                      mah:TextBoxHelper.Watermark="http://keycloak.hkt/fde.makina.rocks/"/>
             </Border>
             <!-- 상태 메시지 -->
-            <TextBlock Grid.Row="2" x:Name="lblStatus" Style="{StaticResource StatusLabelStyle}"/>
+            <Label Style="{StaticResource CommonLabelStyle}" Grid.Row="2" x:Name="lblStatus" />
             <!-- API URL 라벨 -->
-            <TextBlock Grid.Row="3" Text="API URL" Style="{StaticResource LoginLabelStyle}"/>
+            <Label Style="{StaticResource CommonLabelStyle}" Grid.Row="3" Content="API URL" />
             <!-- API URL 입력 -->
-            <Border Grid.Row="4" Background="White" BorderBrush="#E7E7EE" BorderThickness="2" CornerRadius="4" Padding="10" Margin="0,5,0,0">
+            <Border Style="{StaticResource CustomPanelStyle}" Grid.Row="4" >
                 <TextBox x:Name="txtAPIUrl"
-                     Style="{StaticResource LoginTextBoxStyle}"
+                     Style="{StaticResource FlatTextBoxStyle}"
                          mah:TextBoxHelper.UseFloatingWatermark="True"
                      mah:TextBoxHelper.Watermark="http://api.hkt/fde.makina.rocks/"/>
             </Border>
             <!-- API 상태 메시지 -->
-            <TextBlock Grid.Row="5" x:Name="lblAPIUrlStatus" Style="{StaticResource StatusLabelStyle}"/>
+            <Label Style="{StaticResource CommonLabelStyle}" Grid.Row="5" x:Name="lblAPIUrlStatus" />
             <!-- 버튼 영역 -->
             <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
-                <Button x:Name="btnOk" Content="OK" Style="{StaticResource OkButtonStyle}" Command="{Binding CommandOK}"/>
-                <Button x:Name="cancel" Content="Cancel" Style="{StaticResource CancelButtonStyle}" Command="{Binding CommandCancel}"/>
+                <Button x:Name="cancel" Style="{StaticResource SecondaryButtonStyle}" Content="Cancel" Command="{Binding CommandCancel}" Margin="5"/>
+                <Button x:Name="btnOk" Style="{StaticResource UploadButtonStyle}" Width="120" Content="OK"  Command="{Binding CommandOK}" Margin="5"/>
+                
             </StackPanel>
         </Grid>
     </Border>

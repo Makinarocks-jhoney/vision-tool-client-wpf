@@ -7,71 +7,8 @@
              xmlns:local="clr-namespace:vision_tool_client_wpf.View"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <UserControl.Resources>
-        <!-- Colors -->
-        <Color x:Key="ColPageBg">#FFF9F9FB</Color>
-        <!-- (249,249,251) -->
-        <Color x:Key="ColPanelBg">#FFFFFFFF</Color>
-        <Color x:Key="ColBorder">#FFE7E7EE</Color>
-        <Color x:Key="ColPrimary">#FF3A51FB</Color>
-        <Color x:Key="ColText">#FF2B2B3B</Color>
-        <SolidColorBrush x:Key="BrushPageBg"   Color="{StaticResource ColPageBg}"/>
-        <SolidColorBrush x:Key="BrushPanelBg"  Color="{StaticResource ColPanelBg}"/>
-        <SolidColorBrush x:Key="BrushBorder"   Color="{StaticResource ColBorder}"/>
-        <SolidColorBrush x:Key="BrushPrimary"  Color="{StaticResource ColPrimary}"/>
-        <SolidColorBrush x:Key="BrushText"     Color="{StaticResource ColText}"/>
-
-        <!-- 카드 컨테이너 (CustomPanel 대체) -->
-        <Style x:Key="Card" TargetType="Border">
-            <Setter Property="Background" Value="{StaticResource BrushPanelBg}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource BrushBorder}"/>
-            <Setter Property="BorderThickness" Value="2"/>
-            <Setter Property="CornerRadius" Value="8"/>
-            <Setter Property="Padding" Value="0"/>
-            <Setter Property="SnapsToDevicePixels" Value="True"/>
-        </Style>
-
-        <!-- 썸네일 이미지 (카드 배경 역할) -->
-        <Style x:Key="CardThumbnail" TargetType="Image">
-            <Setter Property="Stretch" Value="UniformToFill"/>
-            <Setter Property="Opacity" Value="1"/>
-        </Style>
-
-        <!-- 라벨 버튼(카드 좌하단) : "Unlabeled/OK/NG" -->
-        <Style x:Key="TagButton" TargetType="Border">
-            <Setter Property="CornerRadius" Value="10"/>
-            <Setter Property="Height" Value="40"/>
-            <Setter Property="Width" Value="160"/>
-            <Setter Property="Background" Value="#FF000000"/>
-            <!-- 기본: 검정 -->
-            <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="VerticalAlignment" Value="Bottom"/>
-            <Setter Property="Margin" Value="15,0,0,15"/>
-            
-        </Style>
-
-        <!-- 카드 우상단 선택 체크 표시 (디자인상 위치만 확보) -->
-        <Style x:Key="SelectCorner" TargetType="Border">
-            <Setter Property="Width" Value="22"/>
-            <Setter Property="Height" Value="22"/>
-            <Setter Property="CornerRadius" Value="11"/>
-            <Setter Property="Background" Value="#FFE94040"/>
-            <!-- 빨강 -->
-            <Setter Property="HorizontalAlignment" Value="Right"/>
-            <Setter Property="VerticalAlignment" Value="Top"/>
-            <Setter Property="Margin" Value="0,10,10,0"/>
-            <Setter Property="Opacity" Value="0"/>
-            <!-- 기본 숨김(동작 연결시 Visible로) -->
-        </Style>
-
-        <!-- “데이터 없음” 라벨 -->
-        <Style x:Key="NoDataLabel" TargetType="StackPanel">
-            <Setter Property="Orientation" Value="Horizontal"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="Margin" Value="0,50,0,0"/>
-        </Style>
-    </UserControl.Resources>
-    <Grid Background="{StaticResource BrushPageBg}">
+    
+    <Grid >
         <Grid.RowDefinitions>
             <!-- Searchbar 영역: 원본 비율로 약 25%, 최소 215px -->
             <RowDefinition Height="Auto"/>
@@ -100,17 +37,17 @@
                     <!-- 카드 템플릿 -->
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Border Style="{StaticResource Card}" Margin="5">
+                            <Border Margin="5">
                                 <Grid>
                                     <!-- 썸네일 -->
-                                    <Image Style="{StaticResource CardThumbnail}"
+                                    <Image 
                                            Source="{Binding ThumbnailSource, FallbackValue={x:Null}}"/>
                                     <!-- 좌하단 라벨 버튼 -->
-                                    <Border Style="{StaticResource TagButton}">
+                                    <Border >
                                         <!-- 여기의 Text/색상은 VM에서 ManualResult에 따라 바인딩/트리거로 교체 예정 -->
                                     </Border>
                                     <!-- 우상단 선택 체크(디자인; 동작 연결 시 Visibility 토글) -->
-                                    <Border Style="{StaticResource SelectCorner}"/>
+                                    <Border />
                                 </Grid>
                             </Border>
                         </DataTemplate>
@@ -129,7 +66,7 @@
             </ScrollViewer>
 
             <!-- “데이터 없음” 메시지 -->
-            <StackPanel Style="{StaticResource NoDataLabel}" Visibility="Collapsed">
+            <StackPanel  Visibility="Collapsed">
                 <Image Source="/Resources/noSearchResultsFound.png"
                        Width="35" Height="35" Margin="0,0,6,0"/>
                 <TextBlock Text="Không có dữ liệu để hiển thị." 
@@ -146,22 +83,16 @@
 
             <!-- 하단 중앙 선택 패널(SelectedPanel 대체) -->
             <Border x:Name="SelectedBar"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Bottom"
-                    Margin="0,0,0,20"
-                    Padding="12"
-                    CornerRadius="8"
-                    Background="{StaticResource BrushPanelBg}"
-                    BorderBrush="{StaticResource BrushBorder}" BorderThickness="1"
+                    Style="{StaticResource CustomPanelStyle}"
                     Width="510"
                     Height="50"
                     Visibility="Collapsed">
                 <DockPanel LastChildFill="False">
                     <TextBlock Text="Selected: 0"
                                FontWeight="SemiBold"
-                               Foreground="{StaticResource BrushText}"
+                               
                                VerticalAlignment="Center" />
-                    <Border Background="{StaticResource BrushPrimary}"
+                    <Border 
                             CornerRadius="6" Padding="10,6" Margin="12,0,0,0" DockPanel.Dock="Right">
                         <TextBlock Text="Update Label" Foreground="White"/>
                     </Border>

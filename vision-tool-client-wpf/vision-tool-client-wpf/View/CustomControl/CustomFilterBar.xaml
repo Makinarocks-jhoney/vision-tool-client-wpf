@@ -8,148 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
-    <UserControl.Resources>
-        <Color x:Key="ColBtnBg">#FFFFFFFF</Color>
-        <Color x:Key="ColBtnBorder">#FFE3E2EB</Color>
-        <!-- 227,226,235 -->
-        <Color x:Key="ColBtnText">#FF2B2B3B</Color>
-        <!-- 43,43,59 -->
-        <Color x:Key="ColPrimary">#FF3A51FB</Color>
-        <!-- 58,81,251 -->
-        <SolidColorBrush x:Key="BrushBtnBg" Color="{StaticResource ColBtnBg}"/>
-        <SolidColorBrush x:Key="BrushBtnBorder" Color="{StaticResource ColBtnBorder}"/>
-        <SolidColorBrush x:Key="BrushBtnText" Color="{StaticResource ColBtnText}"/>
-        <SolidColorBrush x:Key="BrushPrimary" Color="{StaticResource ColPrimary}"/>
-
-        <!-- 공통 ComboBox(필터) 스타일: 흰배경/2px 보더/둥근 4px/높이 40 -->
-        <Style x:Key="FilterComboBox" TargetType="ComboBox">
-            <Setter Property="Foreground" Value="{StaticResource BrushBtnText}"/>
-            <Setter Property="FontSize" Value="12"/>
-            <Setter Property="FontFamily" Value="Segoe UI, Malgun Gothic, Arial"/>
-            <Setter Property="Height" Value="40"/>
-            <Setter Property="MinWidth" Value="180"/>
-            <Setter Property="MaxWidth" Value="320"/>
-            <Setter Property="Padding" Value="10,0,12,0"/>
-            <Setter Property="Background" Value="{StaticResource BrushBtnBg}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource BrushBtnBorder}"/>
-            <Setter Property="BorderThickness" Value="2"/>
-            <Setter Property="IsEditable" Value="True"/>
-            <Setter Property="IsReadOnly" Value="True"/>
-            <Setter Property="StaysOpenOnEdit" Value="True"/>
-            <!-- 헤더 텍스트는 Text로 직접 넣어 UX만 표현 (실동작 X) -->
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="ComboBox">
-                        <Grid>
-                            <Border x:Name="Bd" CornerRadius="4"
-                                    Background="{TemplateBinding Background}"
-                                    BorderBrush="{TemplateBinding BorderBrush}"
-                                    BorderThickness="{TemplateBinding BorderThickness}"/>
-
-                            <!-- 좌측: Text / 우측: 뱃지(+N), Clear, ▼ 아이콘 -->
-                            <Grid Margin="6,0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-
-                                <!-- 표시 텍스트: ComboBox.Text 사용 -->
-                                <TextBlock VerticalAlignment="Center" Margin="4,0"
-                                           Text="{TemplateBinding Text}"/>
-
-                                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
-                                    <!-- 뱃지(+N): 디자인 전용. 필요 없으면 Visibility=Collapsed -->
-                                    <Border x:Name="Badge" Background="{StaticResource BrushPrimary}"
-                                            CornerRadius="12" Height="24" MinWidth="24"
-                                            Padding="6,0" Margin="0,0,6,0" VerticalAlignment="Center"
-                                            Visibility="Visible">
-                                        <TextBlock Text="+2" Foreground="White" FontSize="11" FontWeight="SemiBold"
-                                                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                    </Border>
-
-                                    <!-- Clear 아이콘(디자인 전용 버튼) -->
-                                    <Button x:Name="ClearBtn" Width="24" Height="24"
-                                            Background="Transparent" BorderThickness="0"
-                                            Margin="0,0,6,0" ToolTip="Clear">
-                                        <Path Width="14" Height="14" StrokeThickness="2" Stroke="#FF7777"
-                                              Data="M2,2 L12,12 M12,2 L2,12" StrokeEndLineCap="Round" StrokeStartLineCap="Round"/>
-                                    </Button>
-
-                                    <!-- 드롭다운 토글 아이콘 -->
-                                    <ToggleButton x:Name="DropDownToggle"
-                                                  Background="Transparent" BorderThickness="0"
-                                                  Width="24" Height="24" Focusable="False" ClickMode="Press">
-                                        <Path Width="12" Height="12" Fill="#666"
-                                              Data="M0,0 L10,0 L5,6 Z"/>
-                                    </ToggleButton>
-                                </StackPanel>
-                            </Grid>
-
-                            <!-- 드롭다운 팝업: 체크리스트처럼 보이게(UX만) -->
-                            <Popup x:Name="PART_Popup"
-                                   Placement="Bottom"
-                                   IsOpen="{TemplateBinding IsDropDownOpen}"
-                                   AllowsTransparency="True"
-                                   Focusable="False" StaysOpen="False">
-                                <Border Background="White" BorderBrush="{StaticResource BrushBtnBorder}"
-                                        BorderThickness="1" CornerRadius="6" Padding="8" SnapsToDevicePixels="True">
-                                    <ScrollViewer VerticalScrollBarVisibility="Auto" MinWidth="{TemplateBinding ActualWidth}">
-                                        <StackPanel>
-                                            <CheckBox Content="All" IsChecked="True" Margin="4"/>
-                                            <Separator/>
-                                            <!-- 항목 예시: 여기만 바꿔 끼우면 됨 -->
-                                            <CheckBox Content="OK" Margin="4"/>
-                                            <CheckBox Content="NG" Margin="4"/>
-                                            <CheckBox Content="Unlabeled" Margin="4"/>
-                                        </StackPanel>
-                                    </ScrollViewer>
-                                </Border>
-                            </Popup>
-                        </Grid>
-
-                        <!-- 상태 트리거 -->
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="Bd" Property="Opacity" Value="0.96"/>
-                            </Trigger>
-                            <Trigger Property="IsEnabled" Value="False">
-                                <Setter TargetName="Bd" Property="Opacity" Value="0.5"/>
-                            </Trigger>
-                            
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <!-- More Filters 버튼 -->
-        <Style x:Key="MoreFiltersButton" TargetType="Button">
-            <Setter Property="Background" Value="{StaticResource BrushBtnBg}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource BrushBtnBorder}"/>
-            <Setter Property="BorderThickness" Value="2"/>
-            <Setter Property="Foreground" Value="{StaticResource BrushBtnText}"/>
-            <Setter Property="FontSize" Value="12"/>
-            <Setter Property="FontFamily" Value="Segoe UI, Malgun Gothic, Arial"/>
-            <Setter Property="Height" Value="40"/>
-            <Setter Property="MinWidth" Value="140"/>
-            <Setter Property="Padding" Value="10,0"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border CornerRadius="4"
-                                Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}">
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="6,0">
-                                <TextBlock Text="➕" Margin="0,0,6,0"/>
-                                <ContentPresenter/>
-                            </StackPanel>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </UserControl.Resources>
+    
 
     <!-- 배치: 가로 플로우 -->
     <Grid>
@@ -164,19 +23,19 @@
         </Grid.ColumnDefinitions>
 
         <!-- Line -->
-        <ComboBox Grid.Column="0" Style="{StaticResource FilterComboBox}"
+        <ComboBox Grid.Column="0" 
                   Text="Line"/>
 
         <!-- AIResult (+2 뱃지 예시) -->
-        <ComboBox Grid.Column="2" Style="{StaticResource FilterComboBox}"
+        <ComboBox Grid.Column="2" 
                   Text="AI 판정"/>
 
         <!-- ManualResult (+1 뱃지 표현 원하면 Badge Text를 +1로 교체) -->
-        <ComboBox Grid.Column="4" Style="{StaticResource FilterComboBox}"
+        <ComboBox Grid.Column="4" 
                   Text="작업자 판정"/>
 
         <!-- More Filters -->
-        <Button Grid.Column="6" Style="{StaticResource MoreFiltersButton}"
+        <Button Grid.Column="6" 
                 Content="더 보기"/>
     </Grid>
 

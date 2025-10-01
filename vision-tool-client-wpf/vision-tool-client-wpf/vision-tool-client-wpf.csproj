@@ -21,7 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\calendar_icon.png" />
     <Resource Include="Resources\cameraIcon.png" />
     <Resource Include="Resources\icon-park-outline_done-all.png" />
     <Resource Include="Resources\logoVisionTool.png" />

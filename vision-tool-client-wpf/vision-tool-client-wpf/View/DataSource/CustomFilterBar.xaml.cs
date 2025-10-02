@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace vision_tool_client_wpf.View.CustomControl
+namespace vision_tool_client_wpf.View.DataSource
 {
     /// <summary>
     /// CustomFilterBar.xaml에 대한 상호 작용 논리

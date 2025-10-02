@@ -1,27 +1,32 @@
-﻿using CommunityToolkit.Mvvm.DependencyInjection;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.DependencyInjection;
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
+using vision_tool_client_wpf.Settings;
 
 
 namespace vision_tool_client_wpf
 {
-    internal class StartUpViewModel
+    internal sealed class StartUpViewModel:ObservableObject
     {
 
         #region 프로퍼티
         private readonly IWindowService _windows;
-        /*
-        public int MyVariable
-          {
-              get { return _myVariable; }
-              set { _myVariable = value; RaisePropertyChanged("MyVariable"); }
-          }
-          private int _myVariable;
-          */
+
+        private GlobalSettingInformation globalSetting { get; set; } = new GlobalSettingInformation();
+
+        public bool IsLogoVisible
+        {
+            get { return _isLogoVisible; }
+            set { _isLogoVisible = value; OnPropertyChanged("IsLogoVisible"); }
+        }
+        private bool _isLogoVisible = false;
+        
         #endregion
         #region 커맨드
         public RelayCommand<object> CommandCancel { get; private set; }
@@ -68,9 +73,10 @@ namespace vision_tool_client_wpf
         {
             try
             {
+                var vm = new MainWindowViewModel(_windows, globalSetting);
                 MainWindow mainWindow = new MainWindow
                 {
-                    DataContext = Ioc.Default.GetRequiredService<MainWindowViewModel>()
+                    DataContext = vm
                 };
                 mainWindow.Show();
                 _windows.Close(this);

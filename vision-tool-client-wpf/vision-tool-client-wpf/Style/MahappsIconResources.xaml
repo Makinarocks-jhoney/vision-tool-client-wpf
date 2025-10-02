@@ -1,0 +1,33 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks">
+
+
+    <DataTemplate DataType="{x:Type iconPacks:PackIconMaterialKind}">
+        <iconPacks:PackIconMaterial Kind="{Binding}" Width="16" Height="16"/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type iconPacks:PackIconBootstrapIconsKind}">
+        <iconPacks:PackIconBootstrapIcons Kind="{Binding}" Width="16" Height="16"/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type iconPacks:PackIconBoxIconsKind}">
+        <iconPacks:PackIconBoxIcons Kind="{Binding}" Width="16" Height="16"/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type iconPacks:PackIconEntypoKind}">
+        <iconPacks:PackIconEntypo Kind="{Binding}" Width="16" Height="16"/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type iconPacks:PackIconPhosphorIconsKind}">
+        <iconPacks:PackIconPhosphorIcons Kind="{Binding}" Width="16" Height="16" />
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type iconPacks:PackIconUniconsKind}">
+        <iconPacks:PackIconUnicons Kind="{Binding}" Width="16" Height="16" />
+    </DataTemplate>
+
+    <Style x:Key="IconStyle" TargetType="ContentControl">
+        <Setter Property="Width" Value="20"/>
+        <Setter Property="Height" Value="20"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <!-- MahApps 테마 색상을 따르게 -->
+        <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.ThemeForeground}"/>
+    </Style>
+</ResourceDictionary>

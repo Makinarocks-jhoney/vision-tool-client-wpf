@@ -7,6 +7,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Resources\MakinaRocks_Logo_MRX_circle.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,31 +15,48 @@
     <None Remove="Resources\cameraIcon.png" />
     <None Remove="Resources\icon-park-outline_done-all.png" />
     <None Remove="Resources\logoVisionTool.png" />
+    <None Remove="Resources\MakinaRocks-purple-white%28square%29.png" />
+    <None Remove="Resources\makina_square-t.png" />
     <None Remove="Resources\noSearchResultsFound.png" />
     <None Remove="Resources\plus.png" />
+    <None Remove="Resources\plusIcon.png" />
     <None Remove="Resources\RealTimeIcon.png" />
     <None Remove="Resources\signout.png" />
+    <None Remove="Resources\uploadImage.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\MakinaRocks_Logo_MRX_circle.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\MakinaRocks-purple-white(square).png" />
+    <Resource Include="Resources\MakinaRocks_Logo_MRX_circle.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Resources\cameraIcon.png" />
     <Resource Include="Resources\icon-park-outline_done-all.png" />
     <Resource Include="Resources\logoVisionTool.png" />
+    <Resource Include="Resources\makina_square-t.png" />
     <Resource Include="Resources\noSearchResultsFound.png" />
     <Resource Include="Resources\plus.png" />
+    <Resource Include="Resources\plusIcon.png" />
     <Resource Include="Resources\RealTimeIcon.png" />
     <Resource Include="Resources\signout.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Converter\" />
+    <Resource Include="Resources\uploadImage.png" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
     <PackageReference Include="MahApps.Metro" Version="2.4.11" />
+    <PackageReference Include="MahApps.Metro.IconPacks" Version="6.1.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.9" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.9" />
+    <PackageReference Include="Minio" Version="6.0.5" />
+    <PackageReference Include="OpenCvSharp4" Version="4.11.0.20250507" />
+    <PackageReference Include="OpenCvSharp4.Extensions" Version="4.11.0.20250507" />
+    <PackageReference Include="OpenCvSharp4.WpfExtensions" Version="4.11.0.20250507" />
   </ItemGroup>
 
 </Project>

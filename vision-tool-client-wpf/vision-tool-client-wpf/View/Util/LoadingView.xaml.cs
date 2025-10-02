@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace vision_tool_client_wpf.View.CustomControl
+namespace vision_tool_client_wpf.View.Util
 {
     /// <summary>
-    /// SearchbarView.xaml에 대한 상호 작용 논리
+    /// LoadingView.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class SearchbarView : UserControl
+    public partial class LoadingView : UserControl
     {
-        public SearchbarView()
+        public LoadingView()
         {
             InitializeComponent();
         }

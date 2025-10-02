@@ -3,12 +3,58 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:custom="clr-namespace:vision_tool_client_wpf.View.CustomControl"
+             xmlns:custom="clr-namespace:vision_tool_client_wpf.View.DataSource"
              xmlns:local="clr-namespace:vision_tool_client_wpf.View"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    
+    <Grid>
+    <mah:FlyoutsControl Panel.ZIndex="10" >
+            <mah:Flyout IsOpen="{Binding IsOpenDataUpload}" Position="Right" 
+                        Theme="Light"
+                        BorderBrush="{DynamicResource MahApps.Brushes.ThemeForeground}" BorderThickness="1"
+                        
+                        >
+                
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.Resources>
+                        <Style TargetType="Label" BasedOn="{StaticResource CommonLabelStyle}">
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                            <Setter Property="VerticalAlignment" Value="Center" />
+                        </Style>
+                    </Grid.Resources>
+                    <Label Grid.Row="0" Content="데이터 업로드" />
+                    <Label Grid.Row="1" Content="데이터 세트를 업데이트하기 위해 파일을 업로드하세요" />
+                    <StackPanel Grid.Row="2" Orientation="Vertical" Margin="20" HorizontalAlignment="Center" Background="#F7F7F7">
+                        <Image Source="/Resources/uploadImage.png" Width="40" Height="40" />
+                        <Label Style="{StaticResource CommonLabelStyle}" Content="'파일 선택'을 클릭하여 업로드 하세요" />
+                        <Button Style="{StaticResource SecondaryButtonStyle}" Width="160" Command="{Binding CommandOpenFiles}"  >
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/Resources/plusIcon.png" />
+                                    <Label Content="파일 선택" />
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                    </StackPanel>
+
+                    <ListBox Grid.Row="3" />
+                    <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right" Margin="15">
+                        <Button Style="{StaticResource SecondaryButtonStyle}" Content="취소버튼" Margin="5" />
+                        <Button Style="{StaticResource PrimaryButtonStyle}" Content="업로드" Margin="5" />
+                    </StackPanel>
+                </Grid>
+            </mah:Flyout>
+    </mah:FlyoutsControl>
     <Grid >
+        
         <Grid.RowDefinitions>
             <!-- Searchbar 영역: 원본 비율로 약 25%, 최소 215px -->
             <RowDefinition Height="Auto"/>
@@ -17,7 +63,7 @@
 
         <!-- ===== 상단 Searchbar 대체 UI (디자인) ===== -->
         <StackPanel Grid.Row="0" >
-            <custom:SearchbarView  />
+            <custom:SearchbarView DataContext="{Binding SearchbarViewModel}" />
             <custom:CustomFilterBar />
         </StackPanel>
         
@@ -103,5 +149,6 @@
                 </DockPanel>
             </Border>
         </Grid>
+    </Grid>
     </Grid>
 </UserControl>

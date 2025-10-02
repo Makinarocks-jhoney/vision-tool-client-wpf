@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:vision_tool_client_wpf"
         xmlns:view="clr-namespace:vision_tool_client_wpf.View"
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
-                 xmlns:b="clr-namespace:vision_tool_client_wpf.Behaviors"
+        
+        xmlns:b="clr-namespace:vision_tool_client_wpf.Behaviors"
         mc:Ignorable="d"
         Background="#FFF9F9FB"
         Title="" WindowState="Maximized">
@@ -86,6 +87,21 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="auto" />
                                 <ColumnDefinition Width="*" />
+
+                            </Grid.ColumnDefinitions>
+
+                            <ContentControl Grid.Column="0" Style="{StaticResource IconStyle}" Content="PackIconMaterialKind.Database" Width="20" Height="20" />
+                            <TextBlock Grid.Column="1" Text="데이터 관리" FontFamily="Roboto" Margin="10" />
+                        </Grid>
+                    </TabItem.Header>
+                    <view:RealTimeInspectionView DataContext="{Binding RealTimeInspectionViewModel}" />
+                </TabItem>
+                <TabItem  >
+                    <TabItem.Header>
+                        <Grid Width="200">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="*" />
                                 
                             </Grid.ColumnDefinitions>
 
@@ -93,7 +109,7 @@
                             <TextBlock Grid.Column="1" Text="실시간 검사" FontFamily="Roboto" Margin="10" />
                         </Grid>
                     </TabItem.Header>
-                    <view:RealTimeInspectionView />
+                    <view:RealTimeInspectionView DataContext="{Binding RealTimeInspectionViewModel}" />
                 </TabItem>
                 <TabItem  >
                     <TabItem.Header>
